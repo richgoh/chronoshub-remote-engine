@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Timezone Policy</label>
+    <pluralLabel>Timezone Policies</pluralLabel>
+    <visibility>Public</visibility>
+    <description>Defines working hours and escalation policies for each timezone region</description>
+</CustomObject>

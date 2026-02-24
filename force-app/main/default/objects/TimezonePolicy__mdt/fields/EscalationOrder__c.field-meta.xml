@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EscalationOrder__c</fullName>
+    <label>Escalation Order</label>
+    <description>Order in escalation chain (1=Primary, 2=Secondary, 3=Tertiary)</description>
+    <required>true</required>
+    <type>Number</type>
+    <precision>2</precision>
+    <scale>0</scale>
+</CustomField>

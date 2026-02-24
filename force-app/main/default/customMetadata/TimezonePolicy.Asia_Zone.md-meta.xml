@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Asia Zone</label>
+    <protected>false</protected>
+    <values>
+        <field>Region__c</field>
+        <value xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Asia</value>
+    </values>
+    <values>
+        <field>TimezoneId__c</field>
+        <value xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Asia/Singapore</value>
+    </values>
+    <values>
+        <field>WorkingHoursStart__c</field>
+        <value xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">09:00</value>
+    </values>
+    <values>
+        <field>WorkingHoursEnd__c</field>
+        <value xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">18:00</value>
+    </values>
+    <values>
+        <field>EscalationOrder__c</field>
+        <value xsi:type="xsd:double" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">3</value>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value xsi:type="xsd:boolean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</value>
+    </values>
+    <values>
+        <field>SLAHours__c</field>
+        <value xsi:type="xsd:double" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">8.0</value>
+    </values>
+</CustomMetadata>
