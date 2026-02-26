@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title="🌍 ChronosHub - Timezone Coordinator" icon-name="standard:dashboard">
+        
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-align_absolute-center slds-m-vertical_large">
+                <lightning-spinner alternative-text="Loading timezones..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={error}>
+            <div class="slds-m-around_medium">
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <h2>{error}</h2>
+                </div>
+            </div>
+        </template>
+
+        <!-- Timezone Cards -->
+        <template if:true={timezones}>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each={timezones} for:item="timezone">
+                    <div key={timezone.region} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <div class="slds-box slds-m-around_small timezone-card">
+                            
+                            <!-- Region Header -->
+                            <div class="slds-text-heading_medium slds-m-bottom_small">
+                                <span class="region-icon">{timezone.icon}</span>
+                                {timezone.region}
+                            </div>
+
+                            <!-- Timezone Info -->
+                            <div class="slds-text-body_small slds-m-bottom_x-small">
+                                <strong>Timezone:</strong> {timezone.timezoneId}
+                            </div>
+
+                            <!-- Current Time -->
+                            <div class="slds-text-body_regular slds-m-bottom_small">
+                                <lightning-icon icon-name="utility:clock" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                                <strong>Current:</strong> {timezone.currentTime}
+                            </div>
+
+                            <!-- Working Hours -->
+                            <div class="slds-text-body_small slds-m-bottom_small">
+                                <strong>Working Hours:</strong> {timezone.workingHoursStart} - {timezone.workingHoursEnd}
+                            </div>
+
+                            <!-- Status Badge -->
+                            <div class="slds-m-bottom_small">
+                                <template if:true={timezone.isWorkingHours}>
+                                    <lightning-badge label="🟢 OPEN" class="status-open"></lightning-badge>
+                                </template>
+                                <template if:false={timezone.isWorkingHours}>
+                                    <lightning-badge label="🔴 CLOSED" class="status-closed"></lightning-badge>
+                                </template>
+                            </div>
+
+                            <!-- Next Open Time -->
+                            <template if:false={timezone.isWorkingHours}>
+                                <div class="slds-text-body_small slds-text-color_weak">
+                                    <lightning-icon icon-name="utility:forward" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                                    Next open: {timezone.nextWorkingHourStart}
+                                </div>
+                            </template>
+
+                            <!-- SLA Info -->
+                            <div class="slds-m-top_small slds-text-body_small">
+                                <strong>SLA:</strong> {timezone.slaHours} hours
+                            </div>
+
+                            <!-- Escalation Order -->
+                            <div class="slds-text-body_small slds-text-color_weak">
+                                Escalation Priority: {timezone.escalationOrder}
+                            </div>
+
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Refresh Button -->
+            <div class="slds-align_absolute-center slds-m-vertical_medium">
+                <lightning-button 
+                    label="Refresh" 
+                    onclick={handleRefresh}
+                    icon-name="utility:refresh"
+                    variant="brand">
+                </lightning-button>
+            </div>
+        </template>
+
+        <!-- Last Updated -->
+        <template if:true={lastUpdated}>
+            <div class="slds-text-align_center slds-text-body_small slds-text-color_weak slds-m-bottom_small">
+                Last updated: {lastUpdated}
+            </div>
+        </template>
+
+    </lightning-card>
+</template>
